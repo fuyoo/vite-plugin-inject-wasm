@@ -1,0 +1,33 @@
+{
+    "name": "@fuyoo/vite-plugin-inject-wasm",
+    "version": "0.1.0",
+    "description": "vite@2 plugin to inject wasm!",
+    "scripts": {
+        "build": "tsc"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/fuyoo/vite-plugin-inject-wasm.git"
+    },
+    "keywords": [
+        "vite",
+        "vite-plugin",
+        "wasm"
+    ],
+    "author": "fuyoo",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/fuyoo/vite-plugin-inject-wasm/issues"
+    },
+    "homepage": "https://github.com/fuyoo/vite-plugin-inject-wasm#readme",
+    "devDependencies": {
+        "typescript": "^4.6.3"
+    },
+    "files": [
+        "lib/main.js",
+        "lib/main.d.ts"
+    ],
+    "module": "lib/main.js",
+    "types": "lib/main.d.ts",
+    "sideEffects": false
+}

@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "esnext",           
+    "module": "esnext",
+    "declaration":true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "./lib",
+    "lib": ["esnext"]
+  },
+  "include":["src/*.ts","src/*.d.ts"],
+  "exclude": ["node_modules","lib"]
+}

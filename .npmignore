@@ -1,0 +1,8 @@
+.vscode
+.idea
+.node_modules
+src
+.pnpm-debug.log
+.pnpm-lock.yaml
+package-lock.json
+tsconfig.json

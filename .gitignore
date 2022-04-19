@@ -1,0 +1,8 @@
+.idea
+.DS_store
+.vscode
+node_modules
+.pnpm*
+pnpm*
+package-lock.json
+lib
