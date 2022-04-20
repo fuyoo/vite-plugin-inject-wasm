@@ -43,7 +43,7 @@ export const VitePluginInjectWasm = (cfg: Array<CfgItem>) => {
                     if (id.indexOf(`${pid}.js`) > -1) {
                         return new Promise<any>(async (resolve, reject) => {
                             if (server != null) {
-                                if (host === "") {
+                                if (!host) {
                                 // get listen host
                                 host = server.config.server.host ? await ipv4() : "127.0.0.1"
                                 }
