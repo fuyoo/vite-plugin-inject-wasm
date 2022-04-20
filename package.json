@@ -23,6 +23,7 @@
     "devDependencies": {
         "typescript": "^4.6.3"
     },
+    "main": "lib/main.js",
     "files": [
         "lib/main.js",
         "lib/main.d.ts"

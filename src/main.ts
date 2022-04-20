@@ -1,7 +1,7 @@
-import {copyFile} from "fs"
-import {join, basename, dirname} from "path"
+const {copyFile} = require("fs")
+const {join, basename, dirname} = require("path")
 
-import dgram from "dgram";
+const dgram  = require("dgram")
 
 const ipv4 = async() => {
     return new Promise<string>((resolve, reject) => {
@@ -14,7 +14,7 @@ const ipv4 = async() => {
             resolve(socket.address().address)
             socket.close()
         })
-        socket.on('error', e => resolve('127.0.0.1'))
+        socket.on('error', () => resolve('127.0.0.1'))
     })
 }
 
