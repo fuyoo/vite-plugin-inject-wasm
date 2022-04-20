@@ -1,6 +1,6 @@
 {
     "name": "@fuyoo/vite-plugin-inject-wasm",
-    "version": "0.1.3",
+    "version": "0.1.4",
     "description": "vite@2 plugin to inject wasm!",
     "scripts": {
         "build": "tsc"
