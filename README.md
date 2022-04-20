@@ -26,7 +26,7 @@ export default defineConfig({
 })
 ```
 
-3. **use wasm package at **.vue files `npm create vite@latest my-vue-app -- --template vue`**
+3. **use wasm package at *.vue files `npm create vite@latest my-vue-app -- --template vue`**
 
 ```vue
 <script setup>
@@ -43,7 +43,7 @@ hasher().then(pkg => {
 </template>
 ```
 
-4. ** at ***.ts or **.js file**
+4. **at *.ts or *.js file**
 ```ts
 import hasher from "@fuyoo/wasm-hasher"
 hasher().then(pkg => {
