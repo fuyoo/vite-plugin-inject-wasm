@@ -69,7 +69,6 @@ export const VitePluginInjectWasm = (cfg: Array<CfgItem>) => {
                                 // get server schema
                                 let schema = server.config.server.https ? "https" : "http"
                                 // change body
-                                console.log(basename(item.where))
                                 code = code.replace(basename(item.where),
                                     `${schema}://${host}:${server.config.server.port}${url_path}?v=${v}`);
                                 // existed
