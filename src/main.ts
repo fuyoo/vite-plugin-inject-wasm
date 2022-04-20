@@ -1,4 +1,4 @@
-const {copyFile} = require("fs")
+const {copyFile,stat} = require("fs")
 const {join, basename, dirname} = require("path")
 
 const dgram  = require("dgram")
@@ -25,13 +25,14 @@ interface CfgItem {
     where: string
 }
 
+
 export const VitePluginInjectWasm = (cfg: Array<CfgItem>) => {
     let host:string;
     let server: any;
     return {
         name: "vite-plugin-inject-wasm",
         configureServer(_server: any) {
-            if (server == null) {
+            if (!server) {
                 server = _server
             }
         },
@@ -53,6 +54,16 @@ export const VitePluginInjectWasm = (cfg: Array<CfgItem>) => {
                                 let to_filename = `${item.name}_${basename(item.where)}`.replace("/", "_")
                                 // get copy to file path
                                 let to_path = join(dirname(id), to_filename)
+                                // check file is existed?
+                                let exists = await new Promise((resolve) => {
+                                    stat(to_path, (err:any, stats:any) => {
+                                        if(!err) {
+                                            resolve(true);
+                                        } else {
+                                            resolve(false)
+                                        }
+                                    })
+                                })
                                 // get code replace path from the cache dir
                                 let url_path = to_path.replace(server.config.root, "")
                                 // get server schema
@@ -61,14 +72,19 @@ export const VitePluginInjectWasm = (cfg: Array<CfgItem>) => {
                                 console.log(basename(item.where))
                                 code = code.replace(basename(item.where),
                                     `${schema}://${host}:${server.config.server.port}${url_path}?v=${v}`);
-                                // cp ***.wasm file to vite cache dir
-                                copyFile(from_path, to_path, (err: any) => {
-                                    if (err == null) {
-                                        resolve(code)
-                                    } else {
-                                        reject(err)
-                                    }
-                                })
+                                // existed
+                                if (exists) {
+                                    resolve(code)
+                                } else {
+                                    // cp ***.wasm file to vite cache dir
+                                    copyFile(from_path, to_path, (err: any) => {
+                                        if (err == null) {
+                                            resolve(code)
+                                        } else {
+                                            reject(err)
+                                        }
+                                    })
+                                }
                             }
                         })
                     }
